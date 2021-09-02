@@ -1,0 +1,29 @@
+update(){
+	for (Cell cell : cells) {
+		// rule #1
+		if (cell.isAlive()) {
+			int cellNumber = returnValue(cell);
+			if (counter == 3 || counter == 2)
+				cell.makeAlive();
+			else
+				cell.makeDead();
+		}
+		// rule #2
+		else if (cell.isDead()) {
+			int cellNumber = returnValue(cell);
+			if (counter == 3)
+				cell.makeAlive();
+			else
+				cell.makeDead();
+		}
+	}
+}
+
+int returnValue(Cell cell) {
+	int counter = 0;
+	for (Cell neighbourCell : cell.getNeighbours() {
+		if (neighbourCell.isAlive())
+			counter++;
+	}
+	return counter;
+}

@@ -1,0 +1,104 @@
+<p>
+ * @authors     Matt Bunch, Zach Di, Walter Lowe Mary-Ellen Miranda,
+ * @version     1.0
+ * @since       2020-09-28
+<p>
+
+<b> Three classes: <b>
+Cell:
+    fields:
+        boolean alive
+        int x, y
+        
+    constructor:
+        public Cell(int row, int column){
+            this.row = row;
+            this.col = col;
+            this.alive = false;
+       	}
+        
+    methods:
+        isAlive
+            - return this.alive == true;
+        
+        isDead
+            - return this.alive == false;
+        
+        makeAlive
+            this.alive = true;
+        
+        makeDead
+            this.alive = false;
+            
+World:
+	fields:
+		int rows, cols
+		LinkedList<Cell> cells
+		
+	constructor:
+		public World(int rows, int cols) {
+			this.rows = rows;
+			this.cols = cols;
+			// initialize cells list
+			for (int i = 0; i < rows; i++) {
+				for (int j = 0; j < cols; j++) {
+					this.cells.add(new Cell(i, j));
+				}
+			}
+			drawWorld();
+			
+	methods:
+		drawWorld():
+			draw the world to console for debugging
+	
+		update():
+			loop through list 
+		
+		int returnLiveNeighbours(Cell cell):
+			check cells neighbouring cells for returning a score;
+		
+		increaseSize():
+			expandSize if Cell goes off board.
+		
+		getters 'n setters
+
+Main:
+    methods:
+        drawGrid
+            - draw the grid lines
+            
+        runGame
+            - clear screen, then calls update, drawGrid, drawCells every x amount of frames
+        
+        stopGame
+            - pauses game
+            
+        reset
+            - resets the game to initial positions
+            
+        start(stage primaryStage) throws Exception
+            - create canvas
+            - contains keyframe and timeline
+                - handle {
+                    runGame
+                    }    
+                - keyboard input to pause and reset game
+                        
+        public static void main(String[] args)
+            - Application.launch(args)
+            
+            
+getRectangles method:
+// return rectangles
+	// FIXME: edit getCells to return a group
+	public void getRectangles() {
+		for (Cell cell : cells) {
+			Rectangle rect = new Rectangle();
+			rect.setX(cell.getX() * SIZE + (WINDOW_WIDTH / 2));
+			rect.setY(cell.getY() * SIZE + (WINDOW_HEIGHT / 2));
+			rect.setHeight(SIZE);
+			rect.setWidth(SIZE);
+			rectangles.add(rect);
+		}
+	}
+	
